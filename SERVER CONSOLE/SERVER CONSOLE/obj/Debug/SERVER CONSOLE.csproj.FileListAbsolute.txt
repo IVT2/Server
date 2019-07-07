@@ -1,0 +1,7 @@
+C:\Users\Ёж\source\repos\SERVER CONSOLE\SERVER CONSOLE\obj\Debug\SERVER CONSOLE.csprojResolveAssemblyReference.cache
+C:\Users\Ёж\source\repos\SERVER CONSOLE\SERVER CONSOLE\obj\Debug\SERVER CONSOLE.csproj.CoreCompileInputs.cache
+C:\Users\Ёж\source\repos\SERVER CONSOLE\SERVER CONSOLE\bin\Debug\SERVER CONSOLE.exe.config
+C:\Users\Ёж\source\repos\SERVER CONSOLE\SERVER CONSOLE\bin\Debug\SERVER CONSOLE.exe
+C:\Users\Ёж\source\repos\SERVER CONSOLE\SERVER CONSOLE\bin\Debug\SERVER CONSOLE.pdb
+C:\Users\Ёж\source\repos\SERVER CONSOLE\SERVER CONSOLE\obj\Debug\SERVER CONSOLE.exe
+C:\Users\Ёж\source\repos\SERVER CONSOLE\SERVER CONSOLE\obj\Debug\SERVER CONSOLE.pdb
