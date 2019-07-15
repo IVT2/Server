@@ -670,11 +670,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Документы\\ServerApp\\ServerApp\\ServerApp.csproj",
+      "projectUniqueName": "C:\\Users\\DeadMaus\\Desktop\\New_ServerApp\\ServerApp\\ServerApp.csproj",
       "projectName": "ServerApp",
-      "projectPath": "D:\\Документы\\ServerApp\\ServerApp\\ServerApp.csproj",
+      "projectPath": "C:\\Users\\DeadMaus\\Desktop\\New_ServerApp\\ServerApp\\ServerApp.csproj",
       "packagesPath": "C:\\Users\\DeadMaus\\.nuget\\packages\\",
-      "outputPath": "D:\\Документы\\ServerApp\\ServerApp\\obj\\",
+      "outputPath": "C:\\Users\\DeadMaus\\Desktop\\New_ServerApp\\ServerApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

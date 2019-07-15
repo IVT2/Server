@@ -9,3 +9,14 @@ D:\Документы\ServerApp\ServerApp\obj\Debug\netcoreapp2.0\ServerApp.Asse
 D:\Документы\ServerApp\ServerApp\obj\Debug\netcoreapp2.0\ServerApp.AssemblyInfo.cs
 D:\Документы\ServerApp\ServerApp\obj\Debug\netcoreapp2.0\ServerApp.dll
 D:\Документы\ServerApp\ServerApp\obj\Debug\netcoreapp2.0\ServerApp.pdb
+C:\Users\DeadMaus\Desktop\New_ServerApp\ServerApp\bin\Debug\netcoreapp2.0\ServerApp.deps.json
+C:\Users\DeadMaus\Desktop\New_ServerApp\ServerApp\bin\Debug\netcoreapp2.0\ServerApp.runtimeconfig.json
+C:\Users\DeadMaus\Desktop\New_ServerApp\ServerApp\bin\Debug\netcoreapp2.0\ServerApp.runtimeconfig.dev.json
+C:\Users\DeadMaus\Desktop\New_ServerApp\ServerApp\bin\Debug\netcoreapp2.0\ServerApp.dll
+C:\Users\DeadMaus\Desktop\New_ServerApp\ServerApp\bin\Debug\netcoreapp2.0\ServerApp.pdb
+C:\Users\DeadMaus\Desktop\New_ServerApp\ServerApp\obj\Debug\netcoreapp2.0\ServerApp.csprojAssemblyReference.cache
+C:\Users\DeadMaus\Desktop\New_ServerApp\ServerApp\obj\Debug\netcoreapp2.0\ServerApp.csproj.CoreCompileInputs.cache
+C:\Users\DeadMaus\Desktop\New_ServerApp\ServerApp\obj\Debug\netcoreapp2.0\ServerApp.AssemblyInfoInputs.cache
+C:\Users\DeadMaus\Desktop\New_ServerApp\ServerApp\obj\Debug\netcoreapp2.0\ServerApp.AssemblyInfo.cs
+C:\Users\DeadMaus\Desktop\New_ServerApp\ServerApp\obj\Debug\netcoreapp2.0\ServerApp.dll
+C:\Users\DeadMaus\Desktop\New_ServerApp\ServerApp\obj\Debug\netcoreapp2.0\ServerApp.pdb
