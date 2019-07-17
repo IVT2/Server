@@ -29,7 +29,7 @@ namespace ConsoleServer
 
             try
             {
-                listener = new TcpListener(IPAddress.Parse("192.168.0.115"), port);
+                listener = new TcpListener(IPAddress.Parse("192.168.0.111"), port);
                 listener.Start();
 
                 
@@ -83,11 +83,14 @@ namespace ConsoleServer
                 byte[] passwordData = new byte[64];
                 byte[] userData = new byte[64];
                 byte[] data = new byte[64];
+                byte[] userExpData = new byte[64];
 
                 StringBuilder builder = new StringBuilder();
                 StringBuilder source = new StringBuilder();
+                StringBuilder user_build = new StringBuilder();
                 int passBytes = 0;
                 int UserBytes = 0;
+                int userExpBytes = 0;
                 do
                 {
                     UserBytes = stream.Read(userData, 0, userData.Length);
@@ -95,9 +98,10 @@ namespace ConsoleServer
 
                     passBytes = stream.Read(passwordData, 0, passwordData.Length);
                     builder.Append(Encoding.Unicode.GetString(passwordData, 0, passBytes));
-
                 }
                 while (stream.DataAvailable);
+
+                
 
                 string pass = builder.ToString();
                 string login = source.ToString();
@@ -105,6 +109,8 @@ namespace ConsoleServer
                 Console.WriteLine(login);
 
                 Console.WriteLine(pass);
+
+                
 
                 user = new UserSessionData();
                 user.UserName = login;
@@ -133,12 +139,23 @@ namespace ConsoleServer
                     stream.Write(data, 0, data.Length);
                 }
 
+                do
+                {
+                    userExpBytes = stream.Read(userExpData, 0, userExpData.Length);
+                    user_build.Append(Encoding.Unicode.GetString(userExpData, 0, userExpBytes));
+                }
+                while (stream.DataAvailable);
 
+                string userEx = source.ToString();
+
+
+
+                //Console.WriteLine(userEx);
 
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                //Console.WriteLine(ex.Message);
             }
             finally
             {
@@ -155,7 +172,7 @@ namespace ConsoleServer
         {
             Console.WriteLine("Wait");
             IResult<InstaUser> userSearch = await api.GetUserAsync(userToScrape);
-            Console.WriteLine(userSearch);
+            Console.WriteLine(userSearch.ToString());
             Console.WriteLine("done");
         }
     }
