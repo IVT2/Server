@@ -4,12 +4,24 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Text;
 using System.Collections.Generic;
+using InstaSharper.API;
+using InstaSharper.API.Builder;
+using InstaSharper.API.Processors;
+using InstaSharper.API.UriCreators;
+using InstaSharper.Classes;
+using InstaSharper.Converters;
+using InstaSharper.Helpers;
+using InstaSharper.Logger;
+using InstaSharper.Classes.Models;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace ConsoleServer
 {
     
     class Program
     {
+        
         const int port = 8888;
         static TcpListener listener;
         static void Main(string[] args)
@@ -22,7 +34,7 @@ namespace ConsoleServer
 
                 
 
-                Console.WriteLine("Ожидание подключений...");
+                Console.WriteLine("Wauting conntecting...");
 
                 
 
@@ -50,12 +62,6 @@ namespace ConsoleServer
         }
     }
 
-    class Person
-    {
-        public string login { get; set; }
-        public string password { get; set; }
-    }
-
     public class ClientObject
     {
         public TcpClient client;
@@ -64,7 +70,11 @@ namespace ConsoleServer
             client = tcpClient;
         }
 
-        public void Process()
+        private static UserSessionData user;
+        private static IInstaApi api;
+
+
+        public async void Process()
         {
             NetworkStream stream = null;
             try
@@ -74,7 +84,6 @@ namespace ConsoleServer
                 byte[] userData = new byte[64];
                 byte[] data = new byte[64];
 
-                // получаем сообщение
                 StringBuilder builder = new StringBuilder();
                 StringBuilder source = new StringBuilder();
                 int passBytes = 0;
@@ -83,42 +92,49 @@ namespace ConsoleServer
                 {
                     UserBytes = stream.Read(userData, 0, userData.Length);
                     source.Append(Encoding.Unicode.GetString(userData, 0, UserBytes));
+
                     passBytes = stream.Read(passwordData, 0, passwordData.Length);
                     builder.Append(Encoding.Unicode.GetString(passwordData, 0, passBytes));
-                    
-                }
-                while (stream.DataAvailable); 
 
-                    
+                }
+                while (stream.DataAvailable);
 
                 string pass = builder.ToString();
                 string login = source.ToString();
 
-                string allertmasseg = "User dosnt exist";
-
-                List<Person> people = new List<Person>();
-                people.Add(new Person() { login = "ivt22222", password = "ivt2121" });
-
-                foreach (Person p in people)
-                {
-                    if (p.login == login & p.password == pass)
-                    {
-                        Console.WriteLine("Ok...");
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Not Found");
-                        data = Encoding.Unicode.GetBytes(allertmasseg);
-                        stream.Write(data, 0, data.Length);
-                    }
-                }
-
                 Console.WriteLine(login);
 
                 Console.WriteLine(pass);
-              
-                
+
+                user = new UserSessionData();
+                user.UserName = login;
+                user.Password = pass;
+
+                string allertmasseg = "User dosnt exist";
+                string findmasseg = "Existing user";
+
+                api = InstaApiBuilder.CreateBuilder()
+                    .SetUser(user)
+                    .UseLogger(new DebugLogger(LogLevel.Exceptions))
+                    .Build();
+
+                var loginRequest = await api.LoginAsync();
+                if (loginRequest.Succeeded)
+                {
+                    Console.WriteLine("Logged in!");
+                    data = Encoding.Unicode.GetBytes(findmasseg);
+                    stream.Write(data, 0, data.Length);
+                    PullUserPosts("mihasquid");
+                }
+                else
+                {
+                    Console.WriteLine("Error logging in!" + loginRequest.Info.Message);
+                    data = Encoding.Unicode.GetBytes(allertmasseg);
+                    stream.Write(data, 0, data.Length);
+                }
+
+
+
             }
             catch (Exception ex)
             {
@@ -131,6 +147,16 @@ namespace ConsoleServer
                 if (client != null)
                     client.Close();
             }
+
+
+        }
+
+        public static async void PullUserPosts(string userToScrape)
+        {
+            Console.WriteLine("Wait");
+            IResult<InstaUser> userSearch = await api.GetUserAsync(userToScrape);
+            Console.WriteLine(userSearch);
+            Console.WriteLine("done");
         }
     }
 }
